@@ -53,4 +53,4 @@ npm run build   # 生成 dist/，其中是可部署为 Cloudflare Worker 的 ESM
 
 ## 许可证
 
-暂未选择许可证，在选定之前保留所有权利。
+本项目采用 [MIT 许可证](LICENSE)。
