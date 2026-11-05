@@ -1,0 +1,11 @@
+{
+  "name": "learn100-mvp",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/preview.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check public/app.js && node --check public/audio.js && node --check public/prompts.js && node --check public/scoring.js && node --check public/score-session.js && node --check public/storage.js && node --check worker/index.js"
+  }
+}
