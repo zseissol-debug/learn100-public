@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f2eee5">
+  <meta name="description" content="Learn100：用一通电话，把 AI 概念讲明白。">
+  <title>Learn100 · 用自己的话讲出来</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="masthead"><div class="brand"><span class="brand-mark">L<span>·</span>100</span><span class="brand-sub">声音里的 AI 课</span></div><button id="export-all" class="link-button">导出记录 ↗</button></header>
+    <div id="notice" class="notice" role="status" hidden></div>
+    <section id="home" class="view">
+      <p class="eyebrow">LEARN BY EXPLAINING</p><h1>听一遍，<em>讲出来。</em></h1>
+      <p class="lead">和小练通一通电话，用自己的话学会一个 AI 概念。</p>
+      <div class="section-head"><span>01 / 选择概念</span><span id="concept-count"></span></div>
+      <div class="catalog-tools">
+        <label class="search-wrap"><span class="sr-only">搜索概念</span><span aria-hidden="true">⌕</span><input id="concept-search" type="search" placeholder="搜索概念" autocomplete="off"></label>
+        <label class="filter-wrap"><span class="sr-only">按主题筛选</span><select id="zone-filter"><option value="all">全部主题</option></select></label>
+      </div>
+      <div class="scope-switch" aria-label="概念范围">
+        <button type="button" data-scope="learnable" aria-pressed="false">可学习</button>
+        <button type="button" data-scope="all" aria-pressed="true">全部</button>
+      </div>
+      <p id="catalog-hint" class="catalog-hint">按主题浏览。前置概念只作提醒，也可以在“全部”中直接开始。</p>
+      <div id="concept-groups" class="concept-groups"></div>
+      <p id="empty-catalog" class="empty-catalog" hidden>没有找到符合条件的概念，试试别的关键词或主题。</p>
+    </section>
+    <section id="detail" class="view" hidden>
+      <button class="back" data-back>← 全部概念</button><p class="eyebrow">TODAY'S CONCEPT</p>
+      <p id="detail-index" class="index-number"></p><h2 id="detail-name" class="detail-title"></h2>
+      <p id="detail-definition" class="definition"></p><p id="detail-prereqs" class="muted"></p>
+      <div class="detail-rule"><span>通话流程</span><strong id="detail-flow"></strong></div>
+      <button id="start-call" class="primary">开始这通电话 <span>↗</span></button>
+      <button id="resume-score" class="secondary" hidden>给上次通话重新评分</button>
+      <p class="fine">约 5–8 分钟 · 需要麦克风权限 · 学习记录只存在本机</p>
+      <details class="settings"><summary>API Key 与语速设置 <span>⌄</span></summary>
+        <label>豆包语音 API Key<input id="voice-key" type="password" autocomplete="off" placeholder="X-Api-Key"></label>
+        <label>火山方舟 API Key<input id="ark-key" type="password" autocomplete="off" placeholder="用于通话后评分"></label>
+        <label>导师语速<select id="speed"><option value="-20">稍慢</option><option value="0" selected>正常</option><option value="20">稍快</option></select></label>
+        <p class="fine">两种服务的 Key 分开填写。Key 仅保存在这个浏览器里，请勿在公用设备上使用。</p>
+      </details>
+    </section>
+    <section id="call" class="view call-view" hidden>
+      <div class="call-top"><span id="call-concept"></span><span id="call-clock">00:00</span></div>
+      <div class="stage-track"><span id="stage-opening">开场</span><span id="stage-talk">讲解</span><span id="stage-retell">复述</span><span id="stage-followup">追问</span></div>
+      <div class="call-center"><div id="orb" class="orb"><span>✦</span></div><p id="call-kicker" class="eyebrow">正在连接</p><h2 id="call-title">小练正在加入</h2><p id="call-instruction">请稍等，准备好麦克风。</p></div>
+      <div id="live-text" class="live-text" aria-live="polite"></div>
+      <details id="retell-hint" class="hint" hidden><summary>想不起来？看一点提示</summary><p id="hint-text"></p></details>
+      <div class="call-controls"><button id="speak-button" class="speak-button" disabled>开始说话</button><button id="interrupt-button" class="secondary" hidden>打断讲解</button><button id="end-button" class="end-button">结束通话</button></div>
+    </section>
+    <section id="feedback" class="view" hidden><button class="back" data-back>← 全部概念</button><p class="eyebrow">AFTER THE CALL</p><h2 id="feedback-name" class="detail-title"></h2>
+      <div id="feedback-loading" class="loading">转写已保存，正在给你整理反馈…</div>
+      <div id="feedback-content" hidden><div class="score-panel"><div><span>讲到的要点</span><strong id="coverage"></strong></div><div><span>理解得分</span><strong id="total-score"></strong></div></div>
+        <div id="point-list" class="point-list"></div><div id="feedback-copy" class="feedback-copy"></div><p id="status-line" class="status-line"></p></div>
+      <div id="score-error" class="score-error" hidden><p>转写已保存，但评分暂时失败。</p><button id="retry-score" class="secondary">重新评分</button></div>
+      <div class="feedback-actions"><button id="export-session" class="primary">导出本次记录 ↗</button><button id="another-concept" class="secondary">再选一个概念</button></div>
+    </section>
+    <footer>LEARN100 <span>·</span> 学会讲给别人听</footer>
+  </main>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
